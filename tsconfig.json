@@ -24,9 +24,7 @@
       "@constants": ["./modules/constants.ts"],
       "@design/*": ["./modules/design/*"],
       "@components": ["./components/index"],
-      "@components/*": ["./components/*"],
       "@layouts": ["./layouts/index"],
-      "@layouts/*": ["./layouts/*"],
       "@views/*": ["./views/*"],
       "@elements/*": ["./modules/elements/*"],
       "@redux/*": ["./modules/redux/*"]

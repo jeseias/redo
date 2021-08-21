@@ -37,6 +37,7 @@ export const AddTodoModal = () => {
     }));
 
     dispatch(addNewTodo(todo));
+    setTodo({} as ITodo);
   };
 
   return (
