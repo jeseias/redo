@@ -1,8 +1,18 @@
-import { Flex } from '@chakra-ui/react';
-import { IconType } from 'react-icons/lib';
+import { Box, BoxProps } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
-export const ActionIcon = ({ Icon }: { Icon: IconType }) => (
-  <Flex alignItems="center" justifyContent="center">
-    <Icon size="3rem" />
-  </Flex>
+interface IActionIconProps extends BoxProps {
+  icon: ReactNode;
+}
+
+export const ActionIcon = ({ icon, ...rest }: IActionIconProps) => (
+  <Box
+    {...rest}
+    alignItems="center"
+    justifyContent="center"
+    transition="all ease .2s"
+    cursor="pointer"
+  >
+    {icon}
+  </Box>
 );

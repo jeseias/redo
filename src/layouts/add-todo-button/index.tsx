@@ -1,12 +1,12 @@
 import { Flex, FlexProps, Tooltip } from '@chakra-ui/react';
-import { openTodoModal } from '@redux/todo/todo.dispatch';
+import { setTodoModalVisibility } from '@redux/todo/todo.actions';
 import { MdAdd } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
 export const AddTodoButton = ({ ...rest }: FlexProps) => {
   const dispatch = useDispatch();
 
-  const openModal = () => dispatch(openTodoModal());
+  const openModal = () => dispatch(setTodoModalVisibility(true));
 
   return (
     <Tooltip label="add new todo">

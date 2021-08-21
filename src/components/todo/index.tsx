@@ -1,10 +1,16 @@
 import { Box, Flex, Heading, Text, Tooltip } from '@chakra-ui/react';
 import { ActionIcon } from '@components/action-icon';
+import { removeTodo } from '@redux/todo/todo.actions';
 import { ITodo } from '@redux/todo/todo.types';
 import { FaCalendar } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
-export const Todo = ({ title, description, startDate, deuDate }: ITodo) => {
+export const Todo = ({ id, title, description, startDate, deuDate }: ITodo) => {
+  const dispatch = useDispatch();
+
+  const deleteTodo = () => dispatch(removeTodo(id));
+
   return (
     <Flex alignItems="center" borderBottom="1px solid" borderColor="whatsAlpha.900" mb="2rem">
       <Box h="100%" width="5rem" />
@@ -40,8 +46,12 @@ export const Todo = ({ title, description, startDate, deuDate }: ITodo) => {
         </Box>
       </Flex>
       <Flex p="2rem" alignItems="center">
-        <ActionIcon Icon={MdEdit} />
-        <ActionIcon Icon={MdDelete} />
+        <ActionIcon icon={<MdEdit size="3rem" />} _hover={{ color: 'blue.500' }} />
+        <ActionIcon
+          icon={<MdDelete size="3rem" />}
+          onClick={deleteTodo}
+          _hover={{ color: 'red.500' }}
+        />
       </Flex>
     </Flex>
   );

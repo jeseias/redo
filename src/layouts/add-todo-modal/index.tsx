@@ -11,31 +11,20 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import { addNewTodo, closeTodoModal } from '@redux/todo/todo.dispatch';
-import { TODOSTATESENUMS } from '@redux/todo/todo.enums';
+import { addNewTodo, setTodoModalVisibility } from '@redux/todo/todo.actions';
 import { getTodoVisibility } from '@redux/todo/todo.selectors';
 import { ITodo } from '@redux/todo/todo.types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 } from 'uuid';
 
 export const AddTodoModal = () => {
   const isOpen = useSelector(getTodoVisibility);
   const dispatch = useDispatch();
-  const closeModal = () => dispatch(closeTodoModal());
+  const closeModal = () => dispatch(setTodoModalVisibility(false));
 
   const [todo, setTodo] = useState<ITodo>({} as ITodo);
 
   const addTodo = () => {
-    const now = new Date();
-
-    setTodo(previousState => ({
-      ...previousState,
-      id: v4(),
-      createAt: previousState.createAt || String(now),
-      state: TODOSTATESENUMS.Todo,
-    }));
-
     dispatch(addNewTodo(todo));
     setTodo({} as ITodo);
   };

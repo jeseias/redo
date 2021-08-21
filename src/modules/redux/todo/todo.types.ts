@@ -1,4 +1,4 @@
-import { TODOSTATESENUMS } from './todo.enums';
+import { TodoStateEnums } from './todo.enums';
 
 export interface ITodo {
   id: string;
@@ -7,7 +7,7 @@ export interface ITodo {
   createAt: string;
   deuDate: string;
   startDate: string;
-  state: TODOSTATESENUMS;
+  state: TodoStateEnums;
 }
 
 export interface ITodoAction {

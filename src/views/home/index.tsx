@@ -1,4 +1,4 @@
-import { Box, Grid } from '@chakra-ui/react';
+import { Box, Grid, Heading } from '@chakra-ui/react';
 import { Todo } from '@components';
 import { AddTodoButton, Header, Sidebar } from '@layouts';
 import { getAllTodos } from '@redux/todo/todo.selectors';
@@ -29,9 +29,11 @@ export const HomeView = () => {
       >
         <AddTodoButton position="absolute" bottom="7rem" right="7rem" bg="blue.500" />
         <Box maxWidth="108rem" width="90%" margin="4rem auto">
-          {todos.map(todo => (
-            <Todo key={todo.id} {...todo} />
-          ))}
+          {todos[0] ? (
+            todos.map(todo => <Todo key={todo.id} {...todo} />)
+          ) : (
+            <Heading textAlign="center">Add a new Todo</Heading>
+          )}
         </Box>
       </Box>
     </Grid>

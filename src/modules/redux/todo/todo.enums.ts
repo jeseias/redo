@@ -7,7 +7,7 @@ export enum TodoActionEnums {
   SET_MODAL_VISIBILITY = 'SET_MODAL_VISIBILITY',
 }
 
-export enum TODOSTATESENUMS {
+export enum TodoStateEnums {
   Todo = 'Todo',
   Completed = 'Completed',
 }
