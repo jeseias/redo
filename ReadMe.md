@@ -11,3 +11,10 @@
 ## Purpose
 
 This is application is being build for the mastering of the **Redux State Management** library.
+
+## Technologies Used
+
+- NextJS (ReactJS)
+- Redux
+- Jest
+- Chakra-UI
