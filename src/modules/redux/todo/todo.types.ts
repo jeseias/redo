@@ -39,4 +39,5 @@ export interface ITodoState {
   };
 }
 
+// eslint-disable-next-line no-unused-vars
 export type TodoReducer<T = any> = (state: ITodoState, action?: T) => ITodoState;

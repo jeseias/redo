@@ -12,6 +12,14 @@
 
 This is application is being build for the mastering of the **Redux State Management** library.
 
+## App Features
+
+- Create Todos
+- Get Todos
+- Update Todos
+- Delete Todos
+
+
 ## Technologies Used
 
 - NextJS (ReactJS)
