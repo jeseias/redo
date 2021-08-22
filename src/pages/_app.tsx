@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { AddTodoModal } from '@layouts/add-todo-modal';
+import { TodoModal } from '@layouts';
 import { wrapper } from '@redux/store';
 import { positions, Provider as AlertProvider, transitions } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -21,7 +21,7 @@ function App({ Component, pageProps }) {
     <ChakraProvider theme={customTheme}>
       <AlertProvider template={AlertTemplate} {...options}>
         <Component {...pageProps} />
-        <AddTodoModal />
+        <TodoModal />
       </AlertProvider>
     </ChakraProvider>
   );

@@ -1,5 +1,5 @@
 import { Flex, Heading } from '@chakra-ui/react';
-import { AddTodoButton } from '@layouts/add-todo-button';
+import { AddTodoButton } from '@layouts';
 
 export const Header = () => {
   return (

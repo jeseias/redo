@@ -11,22 +11,33 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import { addNewTodo, setTodoModalVisibility } from '@redux/todo/todo.actions';
-import { getTodoVisibility } from '@redux/todo/todo.selectors';
+import { addNewTodo, setTodoModalVisibility, updateTodo } from '@redux/todo/todo.actions';
+import { getEditTodo, getTodoVisibility } from '@redux/todo/todo.selectors';
 import { ITodo } from '@redux/todo/todo.types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const AddTodoModal = () => {
+export const TodoModal = () => {
   const isOpen = useSelector(getTodoVisibility);
-  const dispatch = useDispatch();
-  const closeModal = () => dispatch(setTodoModalVisibility(false));
+  const editedTodo = useSelector(getEditTodo);
 
-  const [todo, setTodo] = useState<ITodo>({} as ITodo);
+  const dispatch = useDispatch();
+
+  const [todo, setTodo] = useState<ITodo>({ ...editedTodo } as ITodo);
+
+  useEffect(() => {
+    setTodo({ ...editedTodo });
+  }, [editedTodo]);
+
+  const closeModal = () => dispatch(setTodoModalVisibility(false));
 
   const addTodo = () => {
     dispatch(addNewTodo(todo));
     setTodo({} as ITodo);
+  };
+
+  const editTodo = () => {
+    dispatch(updateTodo(todo.id, todo));
   };
 
   return (
@@ -81,9 +92,15 @@ export const AddTodoModal = () => {
               />
             </FormControl>
           </Box>
-          <Button textAlign="center" m="0 auto" onClick={addTodo}>
-            Add
-          </Button>
+          {todo && todo.id ? (
+            <Button textAlign="center" m="0 auto" onClick={editTodo}>
+              Edit
+            </Button>
+          ) : (
+            <Button textAlign="center" m="0 auto" onClick={addTodo}>
+              Add
+            </Button>
+          )}
         </ModalBody>
       </ModalContent>
     </Modal>

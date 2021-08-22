@@ -1,3 +1,5 @@
+import { Action } from 'redux';
+
 import { TodoStateEnums } from './todo.enums';
 
 export interface ITodo {
@@ -10,16 +12,31 @@ export interface ITodo {
   state: TodoStateEnums;
 }
 
-export interface ITodoAction {
-  type: string;
+export interface IAddTodoAction extends Action<String> {
   payload: ITodo;
 }
-
-export type TTodoReducer = (state: ITodo[], action: { type: string; payload: ITodo }) => ITodo;
+export interface IRemoveTodoAction extends Action<String> {
+  payload: string;
+}
+export interface IUpdateTodoAction extends Action<String> {
+  payload: {
+    id: string;
+    todo: ITodo;
+  };
+}
+export interface ISetModalVisibilityAction extends Action<String> {
+  payload: boolean;
+}
+export interface IStartEditTodoAction extends Action<String> {
+  payload: string;
+}
 
 export interface ITodoState {
   todos: ITodo[];
   modal: {
     isVisible: boolean;
+    todo?: ITodo;
   };
 }
+
+export type TodoReducer<T = any> = (state: ITodoState, action?: T) => ITodoState;
